@@ -47,7 +47,10 @@ app.get("/", (req, res) => {
 app.post('/signup', (req, res)=>{
     Admin.findOne({username: req.body.username}, async (err, admin)=>{
         if(err) throw err
-        if(admin) res.send(false)
+        if(admin){
+            var c = {success:false, admin: ' '}
+            res.send(c)
+        } 
         if(!admin){
             const hash = await bcrypt.hash(req.body.password, 10)
             const newAdmin = new Admin({
@@ -56,8 +59,28 @@ app.post('/signup', (req, res)=>{
                 type: req.body.type
             })
             await newAdmin.save()
-            res.send(req.body.type)
+            var c = {admin:req.body.type, success: true}
+            res.send(c)
             console.log(res)
+        }
+    })
+})
+
+app.post('/searchcustomer', (req, res)=>{
+    service.find({customer: req.body.search}, (err, customer)=>{
+        if(err){
+            var c = {success:false, customer}
+            res.send(c)
+        }else if(customer.length === 0){
+            var c = {success:false, customer}
+            res.send(c)
+            console.log(c.success)
+        }else if(customer){
+            var c = {success:true, customer}
+            res.send(c)
+        }else{
+            var c = {success:false, customer}
+            res.send(c)
         }
     })
 })
