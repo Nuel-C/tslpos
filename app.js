@@ -92,6 +92,10 @@ app.post('/search', function(req, res){//customer or employee search
                 var c = {success: false, customers}
                 console.log(err)
                 res.send(c)
+            }else if(customers.length === 0){
+                var c = {success:false, customers}
+                res.send(c)
+                console.log(c.success)
             }else{
                 var c = {success: true, customers}
                 console.log(customers)
@@ -104,6 +108,10 @@ app.post('/search', function(req, res){//customer or employee search
                 var c = {success: false, customers}
                 console.log(err)
                 res.send(c)
+            }else if(customers.length === 0){
+                var c = {success:false, customers}
+                res.send(c)
+                console.log(c.success)
             }else{
                 var c = {success: true, customers}
                 console.log(customers)
@@ -116,6 +124,10 @@ app.post('/search', function(req, res){//customer or employee search
                 var c = {success: false, customers}
                 console.log(err)
                 res.send(c)
+            }else if(customers.length === 0){
+                var c = {success:false, customers}
+                res.send(c)
+                console.log(c.success)
             }else{
                 var c = {success: true, customers}
                 console.log(customers)
@@ -128,6 +140,10 @@ app.post('/search', function(req, res){//customer or employee search
                 var c = {success: false, customers}
                 console.log(err)
                 res.send(c)
+            }else if(customers.length === 0){
+                var c = {success:false, customers}
+                res.send(c)
+                console.log(c.success)
             }else{
                 var c = {success: true, customers}
                 console.log(customers)
@@ -149,6 +165,10 @@ app.post('/range', function(req, res){
             var c = {success: false, customers}
             console.log(err)
             res.send(c)
+        }else if(customers.length === 0){
+            var c = {success:false, customers}
+            res.send(c)
+            console.log(c.success)
         }else{
             var c = {success: true, customers}
             console.log(customers)
