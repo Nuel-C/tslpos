@@ -30,6 +30,9 @@ const serviceSchema = new mongoose.Schema({
     },
     department: {
         type: String
+    },
+    receipt: {
+        type: String
     }
 })
 

@@ -34,13 +34,13 @@ require('./passportConfig')(passport)
 app.use(express.static(path.join(__dirname, 'build')))
 
 //Routes
-// app.get("/", (req, res) => {
-//     res.setHeader("Access-Control-Allow-Origin", "*")
-//     res.setHeader("Access-Control-Allow-Credentials", "true");
-//     res.setHeader("Access-Control-Max-Age", "1800");
-//     res.setHeader("Access-Control-Allow-Headers", "content-type");
-//     res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" ); 
-// })
+app.get("/", (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Max-Age", "1800");
+    res.setHeader("Access-Control-Allow-Headers", "content-type");
+    res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" ); 
+})
 
 
 
@@ -209,7 +209,8 @@ app.post('/add', (req, res)=>{
             employee: req.body.employee,
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
-            department: req.body.department
+            department: req.body.department,
+            receipt: '000'+Math.floor(Math.random() * 100001)
     }
     service.create(newService, function(err, services){
         if(err){
@@ -240,7 +241,8 @@ app.post('/add', (req, res)=>{
             employee: req.body.employee,
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
-            department: req.body.department
+            department: req.body.department,
+            receipt: '000'+Math.floor(Math.random() * 100001)
     }
     service.create(newService, function(err, services){
         if(err){
@@ -271,7 +273,8 @@ app.post('/add', (req, res)=>{
             employee: req.body.employee,
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
-            department: req.body.department
+            department: req.body.department,
+            receipt: '000'+Math.floor(Math.random() * 100001)
     }
     service.create(newService, function(err, services){
         if(err){
@@ -302,7 +305,8 @@ app.post('/add', (req, res)=>{
             employee: req.body.employee,
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
-            department: req.body.department
+            department: req.body.department,
+            receipt: '000'+Math.floor(Math.random() * 100001)
     }
     service.create(newService, function(err, services){
         if(err){
@@ -333,7 +337,8 @@ app.post('/add', (req, res)=>{
             employee: req.body.employee,
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
-            department: req.body.department
+            department: req.body.department,
+            receipt: '000'+Math.floor(Math.random() * 100001)
     }
     service.create(newService, function(err, services){
         if(err){
@@ -364,7 +369,8 @@ app.post('/add', (req, res)=>{
             employee: req.body.employee,
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
-            department: req.body.department
+            department: req.body.department,
+            receipt: '000'+Math.floor(Math.random() * 100001)
     }
     service.create(newService, function(err, services){
         if(err){
@@ -395,7 +401,8 @@ app.post('/add', (req, res)=>{
             employee: req.body.employee,
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
-            department: req.body.department
+            department: req.body.department,
+            receipt: '000'+Math.floor(Math.random() * 100001)
     }
     service.create(newService, function(err, services){
         if(err){
@@ -426,7 +433,8 @@ app.post('/add', (req, res)=>{
             employee: req.body.employee,
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
-            department: req.body.department
+            department: req.body.department,
+            receipt: '000'+Math.floor(Math.random() * 100001)
     }
     service.create(newService, function(err, services){
         if(err){
@@ -457,7 +465,8 @@ app.post('/add', (req, res)=>{
             employee: req.body.employee,
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
-            department: req.body.department
+            department: req.body.department,
+            receipt: '000'+Math.floor(Math.random() * 100001)
     }
     service.create(newService, function(err, services){
         if(err){
@@ -488,7 +497,8 @@ app.post('/add', (req, res)=>{
             employee: req.body.employee,
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
-            department: req.body.department
+            department: req.body.department,
+            receipt: '000'+Math.floor(Math.random() * 100001)
     }
     service.create(newService, function(err, services){
         if(err){
@@ -519,7 +529,8 @@ app.post('/add', (req, res)=>{
             employee: req.body.employee,
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
-            department: req.body.department
+            department: req.body.department,
+            receipt: '000'+Math.floor(Math.random() * 100001)
     }
     service.create(newService, function(err, services){
         if(err){
@@ -550,7 +561,8 @@ app.post('/add', (req, res)=>{
             employee: req.body.employee,
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
-            department: req.body.department
+            department: req.body.department,
+            receipt: '000'+Math.floor(Math.random() * 100001)
     }
     service.create(newService, function(err, services){
         if(err){
@@ -581,7 +593,8 @@ app.post('/add', (req, res)=>{
             employee: req.body.employee,
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
-            department: req.body.department
+            department: req.body.department,
+            receipt: '000'+Math.floor(Math.random() * 100001)
     }
     service.create(newService, function(err, services){
         if(err){
@@ -620,7 +633,8 @@ app.post('/custom', (req, res)=>{
             employee: req.body.employee,
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
-            department: req.body.department
+            department: req.body.department,
+            receipt: '000'+Math.floor(Math.random() * 100001)
     }
     service.create(newService, function(err, services){
         if(err){
