@@ -11,7 +11,10 @@ const bodyParser = require('body-parser')
 const Admin = require('./models/admin')
 const moment = require('moment')
 const service = require('./models/service')
+const months = require('./models/months')
 const path = require('path')
+const { O_CREAT } = require('constants')
+const init = require('./module/monthData')
 
 //Connect to DB
 mongoose.connect('mongodb+srv://Nuel:chuks@cluster0.ldv66.mongodb.net/tslpos?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
@@ -32,6 +35,9 @@ app.use(passport.initialize())
 app.use(passport.session())
 require('./passportConfig')(passport)
 app.use(express.static(path.join(__dirname, 'build')))
+
+
+// init.addYear()
 
 //Routes
 app.get("/", (req, res) => {
@@ -154,6 +160,13 @@ app.post('/search', function(req, res){//customer or employee search
     
 })
 
+app.get('/getchartdata', (req, res)=>{
+    init.updateMonth()
+    months.findOne({year: 2021}, (err, data)=>{
+        res.json(data)
+    })
+})
+
 app.post('/range', function(req, res){
     service.find({ 
         date : {
@@ -210,7 +223,8 @@ app.post('/add', (req, res)=>{
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
             department: req.body.department,
-            receipt: '000'+Math.floor(Math.random() * 100001)
+            receipt: '000'+Math.floor(Math.random() * 100001),
+            month: Intl.DateTimeFormat('en-US', {month:'long'}).format()
     }
     service.create(newService, function(err, services){
         if(err){
@@ -242,7 +256,8 @@ app.post('/add', (req, res)=>{
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
             department: req.body.department,
-            receipt: '000'+Math.floor(Math.random() * 100001)
+            receipt: '000'+Math.floor(Math.random() * 100001),
+            month: Intl.DateTimeFormat('en-US', {month:'long'}).format()
     }
     service.create(newService, function(err, services){
         if(err){
@@ -274,7 +289,8 @@ app.post('/add', (req, res)=>{
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
             department: req.body.department,
-            receipt: '000'+Math.floor(Math.random() * 100001)
+            receipt: '000'+Math.floor(Math.random() * 100001),
+            month: Intl.DateTimeFormat('en-US', {month:'long'}).format()
     }
     service.create(newService, function(err, services){
         if(err){
@@ -306,7 +322,8 @@ app.post('/add', (req, res)=>{
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
             department: req.body.department,
-            receipt: '000'+Math.floor(Math.random() * 100001)
+            receipt: '000'+Math.floor(Math.random() * 100001),
+            month: Intl.DateTimeFormat('en-US', {month:'long'}).format()
     }
     service.create(newService, function(err, services){
         if(err){
@@ -338,7 +355,8 @@ app.post('/add', (req, res)=>{
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
             department: req.body.department,
-            receipt: '000'+Math.floor(Math.random() * 100001)
+            receipt: '000'+Math.floor(Math.random() * 100001),
+            month: Intl.DateTimeFormat('en-US', {month:'long'}).format()
     }
     service.create(newService, function(err, services){
         if(err){
@@ -370,7 +388,8 @@ app.post('/add', (req, res)=>{
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
             department: req.body.department,
-            receipt: '000'+Math.floor(Math.random() * 100001)
+            receipt: '000'+Math.floor(Math.random() * 100001),
+            month: Intl.DateTimeFormat('en-US', {month:'long'}).format()
     }
     service.create(newService, function(err, services){
         if(err){
@@ -402,7 +421,8 @@ app.post('/add', (req, res)=>{
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
             department: req.body.department,
-            receipt: '000'+Math.floor(Math.random() * 100001)
+            receipt: '000'+Math.floor(Math.random() * 100001),
+            month: Intl.DateTimeFormat('en-US', {month:'long'}).format()
     }
     service.create(newService, function(err, services){
         if(err){
@@ -434,7 +454,8 @@ app.post('/add', (req, res)=>{
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
             department: req.body.department,
-            receipt: '000'+Math.floor(Math.random() * 100001)
+            receipt: '000'+Math.floor(Math.random() * 100001),
+            month: Intl.DateTimeFormat('en-US', {month:'long'}).format()
     }
     service.create(newService, function(err, services){
         if(err){
@@ -466,7 +487,8 @@ app.post('/add', (req, res)=>{
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
             department: req.body.department,
-            receipt: '000'+Math.floor(Math.random() * 100001)
+            receipt: '000'+Math.floor(Math.random() * 100001),
+            month: Intl.DateTimeFormat('en-US', {month:'long'}).format()
     }
     service.create(newService, function(err, services){
         if(err){
@@ -498,7 +520,8 @@ app.post('/add', (req, res)=>{
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
             department: req.body.department,
-            receipt: '000'+Math.floor(Math.random() * 100001)
+            receipt: '000'+Math.floor(Math.random() * 100001),
+            month: Intl.DateTimeFormat('en-US', {month:'long'}).format()
     }
     service.create(newService, function(err, services){
         if(err){
@@ -530,7 +553,8 @@ app.post('/add', (req, res)=>{
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
             department: req.body.department,
-            receipt: '000'+Math.floor(Math.random() * 100001)
+            receipt: '000'+Math.floor(Math.random() * 100001),
+            month: Intl.DateTimeFormat('en-US', {month:'long'}).format()
     }
     service.create(newService, function(err, services){
         if(err){
@@ -562,7 +586,8 @@ app.post('/add', (req, res)=>{
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
             department: req.body.department,
-            receipt: '000'+Math.floor(Math.random() * 100001)
+            receipt: '000'+Math.floor(Math.random() * 100001),
+            month: Intl.DateTimeFormat('en-US', {month:'long'}).format()
     }
     service.create(newService, function(err, services){
         if(err){
@@ -594,7 +619,8 @@ app.post('/add', (req, res)=>{
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
             department: req.body.department,
-            receipt: '000'+Math.floor(Math.random() * 100001)
+            receipt: '000'+Math.floor(Math.random() * 100001),
+            month: Intl.DateTimeFormat('en-US', {month:'long'}).format()
     }
     service.create(newService, function(err, services){
         if(err){
@@ -634,7 +660,8 @@ app.post('/custom', (req, res)=>{
             phone: req.body.phone,
             date: moment(Date.now()).format('LL'),
             department: req.body.department,
-            receipt: '000'+Math.floor(Math.random() * 100001)
+            receipt: '000'+Math.floor(Math.random() * 100001),
+            month: Intl.DateTimeFormat('en-US', {month:'long'}).format()
     }
     service.create(newService, function(err, services){
         if(err){

@@ -13,6 +13,9 @@ const serviceSchema = new mongoose.Schema({
     date: {
         type: String,
     },
+    month:{
+        type: String
+    },
     copies: {
         type: Number
     },
