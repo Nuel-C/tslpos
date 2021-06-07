@@ -67,7 +67,7 @@ function updateMonth(){
     service.find({ 
         date : {
         '$gte': 'May 1, 2021',
-        '$lte': 'May 29, 2021'
+        '$lte': 'May 31, 2021'
         } 
         }, function(err, may){
             var month = 0
@@ -82,7 +82,7 @@ function updateMonth(){
     service.find({ 
         date : {
         '$gte': 'June 1, 2021',
-        '$lte': 'June 29, 2021'
+        '$lte': 'June 30, 2021'
         } 
         }, function(err, jun){
             var month = 0
@@ -97,7 +97,7 @@ function updateMonth(){
     service.find({ 
         date : {
         '$gte': 'July 1, 2021',
-        '$lte': 'July 29, 2021'
+        '$lte': 'July 31, 2021'
         } 
         }, function(err, jul){
             var month = 0
@@ -112,7 +112,7 @@ function updateMonth(){
     service.find({ 
         date : {
         '$gte': 'August 1, 2021',
-        '$lte': 'August 29, 2021'
+        '$lte': 'August 31, 2021'
         } 
         }, function(err, aug){
             var month = 0
@@ -127,7 +127,7 @@ function updateMonth(){
     service.find({ 
         date : {
         '$gte': 'September 1, 2021',
-        '$lte': 'September 29, 2021'
+        '$lte': 'September 30, 2021'
         } 
         }, function(err, sep){
             var month = 0
@@ -142,7 +142,7 @@ function updateMonth(){
     service.find({ 
         date : {
         '$gte': 'October 1, 2021',
-        '$lte': 'October 29, 2021'
+        '$lte': 'October 31, 2021'
         } 
         }, function(err, oct){
             var month = 0
@@ -157,7 +157,7 @@ function updateMonth(){
     service.find({ 
         date : {
         '$gte': 'November 1, 2021',
-        '$lte': 'November 29, 2021'
+        '$lte': 'November 30, 2021'
         } 
         }, function(err, nov){
             var month = 0
@@ -172,7 +172,7 @@ function updateMonth(){
     service.find({ 
         date : {
         '$gte': 'December 1, 2021',
-        '$lte': 'December 29, 2021'
+        '$lte': 'December 31, 2021'
         } 
         }, function(err, dec){
             var month = 0
