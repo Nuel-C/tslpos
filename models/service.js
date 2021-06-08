@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
-
+const date = new Date()
+const month = date.getMonth()
+const year = date.getFullYear()
 const serviceSchema = new mongoose.Schema({
     session: {
         type: String
@@ -36,6 +38,14 @@ const serviceSchema = new mongoose.Schema({
     },
     receipt: {
         type: String
+    },
+    month: {
+        type: String,
+        default: month
+    },
+    year:{
+        type: Number,
+        default: year
     }
 })
 
