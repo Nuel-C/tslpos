@@ -12,12 +12,13 @@ const Admin = require('./models/admin')
 const moment = require('moment')
 const service = require('./models/service')
 const months = require('./models/months')
+const expense = require('./models/expense')
 const path = require('path')
 const { O_CREAT } = require('constants')
 const init = require('./module/monthData')
 
 //Connect to DB
-mongoose.connect('mongodb+srv://Nuel:chuks@cluster0.ldv66.mongodb.net/tslpos?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb+srv://Nuel:chuks@cluster0.ldv66.mongodb.net/tslpos?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
 // mongoose.connect('mongodb://localhost/tsl', {useNewUrlParser: true, useUnifiedTopology: true})
 
 
@@ -198,6 +199,17 @@ app.get('/receipts', function(req, res){
             res.send(err)
         }else{
             res.send(services)
+        }
+    })
+})
+
+app.get('/expensereceipts', function(req, res){
+    expense.find({}, function(err, expenses){
+        if(err){
+            console.log(err)
+            res.send(err)
+        }else{
+            res.send(expenses)
         }
     })
 })
@@ -640,6 +652,28 @@ app.post('/add', (req, res)=>{
 
 })
 
+app.post('/addexpense', (req, res)=>{
+    var details = {
+        description: req.body.description,
+        recipient: req.body.recipient,
+        amount: req.body.amount,
+        date: moment(Date.now()).format('LL'),
+        employee: req.body.employee,
+        receiptnumber: '000'+Math.floor(Math.random() * 100001),
+        department: req.body.department
+    }
+    expense.create(details, (err, expense)=>{
+        if(err){
+            console.log(err)
+            res.send(false)
+        }else{
+            console.log(expense)
+            res.send(expense)
+        }
+        expense.save()
+    })
+})
+
 app.post('/custom', (req, res)=>{
         var newCustomer = req.body.customer
         var newDiscount = req.body.discount
@@ -695,6 +729,10 @@ app.post('/login', (req, res, next)=>{
 app.get('/logout', (req, res)=>{
     req.logout()
     res.send(true)
+})
+
+app.get('*', (req, res)=>{
+    ers.redirect('/')
 })
 
 
