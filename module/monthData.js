@@ -1,5 +1,7 @@
 const service = require("../models/service")
 const months = require('../models/months')
+const expensemonth = require('../models/expensemonth')
+const expense = require('../models/expense')
 
 
 function updateMonth(){
@@ -17,6 +19,15 @@ function updateMonth(){
             months.findOneAndUpdate({year: 2021}, {jan: month}, (err, data)=>{
             })
     })
+
+    expense.find({month: 'January', year: 2021}, function(err, jan){
+        var month = 0
+        for(var i = 0; i < jan.length; i++){
+            month += jan[i].amount
+        }
+        expensemonth.findOneAndUpdate({year: 2021}, {jan: Math.floor(month)}, (err, data)=>{
+        })
+    })
     //Feb
     service.find({ 
         date : {
@@ -30,6 +41,15 @@ function updateMonth(){
             }
             months.findOneAndUpdate({year: 2021}, {feb: month}, (err, data)=>{
             })
+    })
+
+    expense.find({month: 'February', year: 2021}, function(err, feb){
+        var month = 0
+        for(var i = 0; i < feb.length; i++){
+            month += feb[i].amount
+        }
+        expensemonth.findOneAndUpdate({year: 2021}, {feb: Math.floor(month)}, (err, data)=>{
+        })
     })
     //Mar
     service.find({ 
@@ -45,6 +65,15 @@ function updateMonth(){
             months.findOneAndUpdate({year: 2021}, {mar: month}, (err, data)=>{
             })
     })
+
+    expense.find({month: 'March', year: 2021}, function(err, mar){
+        var month = 0
+        for(var i = 0; i < mar.length; i++){
+            month += mar[i].amount
+        }
+        expensemonth.findOneAndUpdate({year: 2021}, {mar: Math.floor(month)}, (err, data)=>{
+        })
+    })
     //Apr
     service.find({ 
         date : {
@@ -58,6 +87,15 @@ function updateMonth(){
             }
             months.findOneAndUpdate({year: 2021}, {apr: month}, (err, data)=>{
             })
+    })
+
+    expense.find({month: 'April', year: 2021}, function(err, apr){
+        var month = 0
+        for(var i = 0; i < apr.length; i++){
+            month += apr[i].amount
+        }
+        expensemonth.findOneAndUpdate({year: 2021}, {apr: Math.floor(month)}, (err, data)=>{
+        })
     })
     //May
     service.find({ 
@@ -73,6 +111,15 @@ function updateMonth(){
             months.findOneAndUpdate({year: 2021}, {may: Math.floor(month)}, (err, data)=>{
             })
     })
+
+    expense.find({month: 'May', year: 2021}, function(err, may){
+        var month = 0
+        for(var i = 0; i < may.length; i++){
+            month += may[i].amount
+        }
+        expensemonth.findOneAndUpdate({year: 2021}, {may: Math.floor(month)}, (err, data)=>{
+        })
+    })
     //Jun
     service.find({month: 'June', year: 2021}, function(err, jun){
             var month = 0
@@ -82,6 +129,15 @@ function updateMonth(){
             months.findOneAndUpdate({year: 2021}, {jun: Math.floor(month)}, (err, data)=>{
             })
     })
+
+    expense.find({month: 'June', year: 2021}, function(err, jun){
+        var month = 0
+        for(var i = 0; i < jun.length; i++){
+            month += jun[i].amount
+        }
+        expensemonth.findOneAndUpdate({year: 2021}, {jun: Math.floor(month)}, (err, data)=>{
+        })
+    })
     //Jul
     service.find({month: 'July', year: 2021}, function(err, jul){
         var month = 0
@@ -89,6 +145,15 @@ function updateMonth(){
             month += jul[i].price
         }
         months.findOneAndUpdate({year: 2021}, {jul: Math.floor(month)}, (err, data)=>{
+        })
+    })
+
+    expense.find({month: 'July', year: 2021}, function(err, jul){
+        var month = 0
+        for(var i = 0; i < jul.length; i++){
+            month += jul[i].amount
+        }
+        expensemonth.findOneAndUpdate({year: 2021}, {jul: Math.floor(month)}, (err, data)=>{
         })
     })
     //Aug
@@ -100,6 +165,15 @@ function updateMonth(){
         months.findOneAndUpdate({year: 2021}, {aug: Math.floor(month)}, (err, data)=>{
         })
     })
+
+    expense.find({month: 'August', year: 2021}, function(err, aug){
+        var month = 0
+        for(var i = 0; i < aug.length; i++){
+            month += aug[i].amount
+        }
+        expensemonth.findOneAndUpdate({year: 2021}, {aug: Math.floor(month)}, (err, data)=>{
+        })
+    })
     //Sep
     service.find({month: 'September', year: 2021}, function(err, sep){
         var month = 0
@@ -107,6 +181,15 @@ function updateMonth(){
             month += sep[i].price
         }
         months.findOneAndUpdate({year: 2021}, {sep: Math.floor(month)}, (err, data)=>{
+        })
+    })
+
+    expense.find({month: 'September', year: 2021}, function(err, sep){
+        var month = 0
+        for(var i = 0; i < sep.length; i++){
+            month += sep[i].amount
+        }
+        expensemonth.findOneAndUpdate({year: 2021}, {sep: Math.floor(month)}, (err, data)=>{
         })
     })
     //Oct
@@ -118,6 +201,15 @@ function updateMonth(){
         months.findOneAndUpdate({year: 2021}, {oct: Math.floor(month)}, (err, data)=>{
         })
     })
+
+    expense.find({month: 'October', year: 2021}, function(err, oct){
+        var month = 0
+        for(var i = 0; i < oct.length; i++){
+            month += oct[i].amount
+        }
+        expensemonth.findOneAndUpdate({year: 2021}, {oct: Math.floor(month)}, (err, data)=>{
+        })
+    })
     //Nov
     service.find({month: 'November', year: 2021}, function(err, nov){
         var month = 0
@@ -125,6 +217,15 @@ function updateMonth(){
             month += nov[i].price
         }
         months.findOneAndUpdate({year: 2021}, {nov: Math.floor(month)}, (err, data)=>{
+        })
+    })
+
+    expense.find({month: 'November', year: 2021}, function(err, nov){
+        var month = 0
+        for(var i = 0; i < nov.length; i++){
+            month += nov[i].amount
+        }
+        expensemonth.findOneAndUpdate({year: 2021}, {nov: Math.floor(month)}, (err, data)=>{
         })
     })
     //Dec
@@ -136,6 +237,15 @@ function updateMonth(){
         months.findOneAndUpdate({year: 2021}, {dec: Math.floor(month)}, (err, data)=>{
         })
     })
+
+    expense.find({month: 'December', year: 2021}, function(err, dec){
+        var month = 0
+        for(var i = 0; i < dec.length; i++){
+            month += dec[i].amount
+        }
+        expensemonth.findOneAndUpdate({year: 2021}, {dec: Math.floor(month)}, (err, data)=>{
+        })
+    })
 }
 
 function addYear(){
@@ -143,6 +253,11 @@ function addYear(){
         console.log(data)
     })
 }
-
+function addYearr(){
+    expensemonth.create({year: 2021}, (err, data)=>{
+        console.log(data)
+    })
+}
 exports.updateMonth = updateMonth
 exports.addYear = addYear
+exports.addYearr = addYearr

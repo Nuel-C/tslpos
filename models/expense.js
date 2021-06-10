@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const date = new Date()
-const month = date.getMonth()
 const year = date.getFullYear()
 const expenseSchema = new mongoose.Schema({
     amount: {
@@ -20,7 +19,6 @@ const expenseSchema = new mongoose.Schema({
     },
     month: {
         type: String,
-        default: month
     },
     year:{
         type: Number,

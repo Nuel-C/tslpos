@@ -12,10 +12,12 @@ const Admin = require('./models/admin')
 const moment = require('moment')
 const service = require('./models/service')
 const months = require('./models/months')
+const expensemonth = require('./models/expensemonth')
 const expense = require('./models/expense')
 const path = require('path')
 const { O_CREAT } = require('constants')
 const init = require('./module/monthData')
+
 
 //Connect to DB
 mongoose.connect('mongodb+srv://Nuel:chuks@cluster0.ldv66.mongodb.net/tslpos?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
@@ -39,6 +41,7 @@ app.use(express.static(path.join(__dirname, 'build')))
 
 
 // init.addYear()
+// init.addYearr()
 
 //Routes
 app.get("/", (req, res) => {
@@ -164,7 +167,13 @@ app.post('/search', function(req, res){//customer or employee search
 app.get('/getchartdata', (req, res)=>{
     init.updateMonth()
     months.findOne({year: 2021}, (err, data)=>{
-        res.json(data)
+        expensemonth.findOne({year: 2021}, (err, data2)=>{
+            var c ={
+                data: data,
+                data2: data2
+            }
+            res.json(c)
+        })
     })
 })
 
@@ -660,7 +669,8 @@ app.post('/addexpense', (req, res)=>{
         date: moment(Date.now()).format('LL'),
         employee: req.body.employee,
         receiptnumber: '000'+Math.floor(Math.random() * 100001),
-        department: req.body.department
+        department: req.body.department,
+        month: Intl.DateTimeFormat('en-US', {month:'long'}).format()
     }
     expense.create(details, (err, expense)=>{
         if(err){
@@ -732,7 +742,7 @@ app.get('/logout', (req, res)=>{
 })
 
 app.get('*', (req, res)=>{
-    ers.redirect('/')
+    res.redirect('/')
 })
 
 
