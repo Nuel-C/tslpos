@@ -177,6 +177,36 @@ app.get('/getchartdata', (req, res)=>{
     })
 })
 
+app.post('/editexpense', (req, res)=>{
+    expense.findOneAndUpdate({_id: req.body.id}, {
+        recipient: req.body.recipient, 
+        department: req.body.department, 
+        description: req.body.description, 
+        amount: req.body.amount
+    }, (err, data)=>{
+        console.log(data)
+        res.json(data)
+    })
+})
+
+app.post('/edittransaction', (req, res)=>{
+    service.findOneAndUpdate({_id: req.body.id}, {
+            session: req.body.service,
+            copies: req.body.units,
+            date: req.body.date,
+            customer: req.body.customer,
+            department: req.body.department,
+            phone: req.body.phone,
+            aprice: req.body.price,
+            discount: req.body.discount,
+            price: req.body.price - ((req.body.discount/100)*req.body.price)
+    }, (err, data)=>{
+        console.log(data)
+        res.json(data)
+    })
+})
+
+
 app.post('/range', function(req, res){
     service.find({ 
         date : {
